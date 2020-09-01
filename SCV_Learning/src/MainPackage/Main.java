@@ -17,12 +17,20 @@ public class Main {
 		for(int i = 0; i < 10; i++) {
 			bank.createAccount(account);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		bank.createAccount(vip);
+		
+		for(int i = 0; i < 11; i++) {
+			bank.createAccount(vip);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		System.out.println(bank.getLog());
 	}
