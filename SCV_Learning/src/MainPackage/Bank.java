@@ -52,7 +52,7 @@ public class Bank {
 		else {
 			if(account instanceof VipAccount) {
 				for(int i = MAX_ACCOUNT - 1; i >= 0; i--) {
-					if(!(account instanceof VipAccount)) {
+					if(!(this.accounts[i] instanceof VipAccount)) {
 						this.addLog("계좌 삭제 - " + this.accounts[i].toString());
 						
 						this.accounts[i] = account;
