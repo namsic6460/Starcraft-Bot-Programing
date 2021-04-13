@@ -20,8 +20,6 @@ public class StrategyManager {
 
 	private boolean isFullScaleAttackStarted;
 	
-	public static int createdDragoons = 0;
-	
 	/// static singleton 객체를 리턴합니다
 	public static StrategyManager Instance() {
 		return instance;
@@ -46,9 +44,6 @@ public class StrategyManager {
 	/// 경기 진행 중 매 프레임마다 경기 전략 관련 로직을 실행합니다
 	public void update() {
 		executeCombat();
-		
-		if(createdDragoons >= 3)
-			isFullScaleAttackStarted = true;
 	}
 
 	public void setInitialBuildOrder() {
@@ -71,7 +66,7 @@ public class StrategyManager {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot,
 					BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
-			/*
+			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Assimilator,
 					BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 
@@ -173,8 +168,7 @@ public class StrategyManager {
 			// 사이버네틱스코어 - 공중 유닛 업그레이드
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UpgradeType.Protoss_Air_Weapons);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UpgradeType.Protoss_Air_Armor);
-
-			*/
+			
 		} 
 		else if (MyBotModule.Broodwar.self().getRace() == Race.Terran) {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
@@ -195,7 +189,7 @@ public class StrategyManager {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Terran_Marine,
 					BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
-			/*
+			
 			// 가스 리파이너리
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getRefineryBuildingType());
 
@@ -310,7 +304,7 @@ public class StrategyManager {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Terran_Command_Center);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Terran_Nuclear_Silo);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Terran_Nuclear_Missile);
-			*/
+			
 		} 
 		else if (MyBotModule.Broodwar.self().getRace() == Race.Zerg) {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
@@ -330,7 +324,7 @@ public class StrategyManager {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(),
 					BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
-			/*
+			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Hatchery,
 					BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
@@ -481,7 +475,7 @@ public class StrategyManager {
 
 			// 퀸 - 인페스티드 테란 : 테란 Terran_Command_Center 건물의 HitPoint가 낮을 때, 퀸을 들여보내서 Zerg_Infested_Command_Center 로 바꾸면, 그 건물에서 실행 됨
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Infested_Terran);
-			*/
+			
 		}
 	}
 	

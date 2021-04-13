@@ -1,3 +1,4 @@
+
 import bwapi.Position;
 
 public class WorkerMoveData

@@ -2,7 +2,6 @@ import bwapi.Player;
 import bwapi.Position;
 import bwapi.TilePosition;
 import bwapi.Unit;
-import bwapi.UnitType;
 
 /// 실제 봇프로그램의 본체가 되는 class<br>
 /// 스타크래프트 경기 도중 발생하는 이벤트들이 적절하게 처리되도록 해당 Manager 객체에게 이벤트를 전달하는 관리자 Controller 역할을 합니다
@@ -79,9 +78,6 @@ public class GameCommander {
 	/// 유닛(건물/지상유닛/공중유닛)이 Create 될 때 발생하는 이벤트를 처리합니다
 	public void onUnitCreate(Unit unit) { 
 		InformationManager.Instance().onUnitCreate(unit);
-		
-		if(unit.getType() == UnitType.Protoss_Dragoon)
-			StrategyManager.createdDragoons++;
 	}
 
 	///  유닛(건물/지상유닛/공중유닛)이 Destroy 될 때 발생하는 이벤트를 처리합니다

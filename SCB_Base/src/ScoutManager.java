@@ -35,7 +35,7 @@ public class ScoutManager {
 	/// static singleton 객체를 리턴합니다
 	public static ScoutManager Instance() {
 		return instance;
-	} 
+	}
 
 	/// 정찰 유닛을 지정하고, 정찰 상태를 업데이트하고, 정찰 유닛을 이동시킵니다
 	public void update()
@@ -64,17 +64,21 @@ public class ScoutManager {
 
 				// first building (Pylon / Supply Depot / Spawning Pool) 을 건설 시작한 후, 가장 가까이에 있는 Worker 를 정찰유닛으로 지정한다
 				Unit firstBuilding = null;
-
+				boolean flag = false;
 				for (Unit unit : MyBotModule.Broodwar.self().getUnits())
 				{
 					if (unit.getType().isBuilding() == true && unit.getType().isResourceDepot() == false)
 					{
-						firstBuilding = unit;
-						break;
+						if(firstBuilding == null) {
+							firstBuilding = unit;
+						} else {
+							flag = true;
+							break;
+						}
 					}
 				}
 
-				if (firstBuilding != null)
+				if (flag)
 				{
 					// grab the closest worker to the first building to send to scout
 					Unit unit = WorkerManager.Instance().getClosestMineralWorkerTo(firstBuilding.getPosition());
@@ -122,25 +126,39 @@ public class ScoutManager {
 				double closestDistance = 1000000000;
 				double tempDistance = 0;
 				BaseLocation closestBaseLocation = null;
+				BaseLocation secondBaseLocation = null;
+				int baseCount = 0;
 				for (BaseLocation startLocation : BWTA.getStartLocations())
 				{
 					// if we haven't explored it yet (방문했었던 곳은 다시 가볼 필요 없음)
 					if (MyBotModule.Broodwar.isExplored(startLocation.getTilePosition()) == false)
 					{
+						baseCount++;
+						
 						// GroundDistance 를 기준으로 가장 가까운 곳으로 선정
-						tempDistance = (double)(InformationManager.Instance().getMainBaseLocation(MyBotModule.Broodwar.self()).getGroundDistance(startLocation) + 0.5);
+						tempDistance = (double)(InformationManager.Instance().getMainBaseLocation(MyBotModule.Broodwar.self()).getDistance(startLocation) + 0.5);
 
 						if (tempDistance > 0 && tempDistance < closestDistance) {
+							if(closestBaseLocation != null) {
+								secondBaseLocation = closestBaseLocation;
+							}
+							
 							closestBaseLocation = startLocation;
 							closestDistance = tempDistance;
 						}
 					}
 				}
 
+				System.out.println(baseCount);
 				if (closestBaseLocation != null) {
-					// assign a scout to go scout it
-					commandUtil.move(currentScoutUnit, closestBaseLocation.getPosition());
-					currentScoutTargetBaseLocation = closestBaseLocation;
+					if(baseCount == 2 && secondBaseLocation != null) {
+						commandUtil.move(currentScoutUnit, secondBaseLocation.getPosition());
+						currentScoutTargetBaseLocation = secondBaseLocation;
+					} else {
+						// assign a scout to go scout it
+						commandUtil.move(currentScoutUnit, closestBaseLocation.getPosition());
+						currentScoutTargetBaseLocation = closestBaseLocation;
+					}
 				}
 			}
 		}
@@ -342,10 +360,7 @@ public class ScoutManager {
 				break;
 			}
 
-			double dist = sortedVertices.get(maxFarthestStart).getDistance(sortedVertices.get(maxFarthestEnd));
-
 			Vector<Position> temp = new Vector<Position>();
-
 			for (int s = maxFarthestEnd; s != maxFarthestStart; s = (s + 1) % sortedVertices.size())
 			{
 				
@@ -399,4 +414,5 @@ public class ScoutManager {
 	{
 		return enemyBaseRegionVertices;
 	}
+	
 }

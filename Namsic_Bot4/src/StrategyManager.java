@@ -3,6 +3,7 @@ import java.util.List;
 import bwapi.Player;
 import bwapi.Position;
 import bwapi.Race;
+import bwapi.TilePosition;
 import bwapi.Unit;
 import bwapi.UnitType;
 import bwapi.UpgradeType;
@@ -313,6 +314,17 @@ public class StrategyManager {
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
+				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);		
+		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
+				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
+		
+		BuildManager.Instance().buildQueue.queueAsLowestPriority(
+				InformationManager.Instance().getBasicSupplyProviderUnitType(),
+				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
+		
+		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
+				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
+		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(
@@ -333,21 +345,12 @@ public class StrategyManager {
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Photon_Cannon,
 				BuildOrderItem.SeedPositionStrategy.FirstChokePoint, true);
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
-		
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
-		
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
-		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		
@@ -360,13 +363,11 @@ public class StrategyManager {
 
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(
 				InformationManager.Instance().getBasicSupplyProviderUnitType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
+				BuildOrderItem.SeedPositionStrategy.SecondChokePoint, true);
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Gateway,
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
@@ -383,7 +384,7 @@ public class StrategyManager {
 
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(
 				InformationManager.Instance().getBasicSupplyProviderUnitType(),
-				BuildOrderItem.SeedPositionStrategy.SecondChokePoint, true);
+				BuildOrderItem.SeedPositionStrategy.FirstChokePoint, true);
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
@@ -421,8 +422,6 @@ public class StrategyManager {
 				BuildOrderItem.SeedPositionStrategy.SecondChokePoint, true);
 
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.FirstExpansionLocation, true);
 
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Gateway,
@@ -459,9 +458,6 @@ public class StrategyManager {
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.FirstExpansionLocation, true);
-
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 		
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Stargate,
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
@@ -472,8 +468,6 @@ public class StrategyManager {
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Dragoon,
 				BuildOrderItem.SeedPositionStrategy.MainBaseLocation, true);
 
-		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
-				BuildOrderItem.SeedPositionStrategy.FirstExpansionLocation, true);
 		BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType(),
 				BuildOrderItem.SeedPositionStrategy.FirstExpansionLocation, true);
 
